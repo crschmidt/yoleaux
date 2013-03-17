@@ -20,6 +20,13 @@ command_set :general do
         scalar = scalar.to_f
         secs += (scalar * (abbrs[unit.downcase] || 0))
       end
+      if not secs
+        begin
+          secs = Integer(time) * 60
+        rescue
+          secs = 0.0
+        end
+      end  
       secs
     end
     
